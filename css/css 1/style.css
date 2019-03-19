@@ -1,11 +1,15 @@
 p {
     font-family: Arial;
-  }
-  
-  h1 {
+}
+
+h1 {
     color: maroon;
-  }
-  
-  .title {
+}
+
+.title {
     color: teal;
-  }
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
