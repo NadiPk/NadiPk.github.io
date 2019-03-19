@@ -1,9 +1,11 @@
 p {
     font-family: Arial;
-}
-
-h1 {
+  }
+  
+  h1 {
     color: maroon;
-}
-
-p
+  }
+  
+  .title {
+    color: teal;
+  }
