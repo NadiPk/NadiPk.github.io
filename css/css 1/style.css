@@ -10,6 +10,15 @@ h2.destination {
     font-family: cursive;
 }
 
+h5 {
+    color: rebeccapurple !important;
+}
+
+h5,
+p {
+    font-family: Georgia;
+}
+
 .title {
     color: teal;
 }
@@ -31,6 +40,5 @@ h2.destination {
 }
 
 .description h5 {
-    color: rebeccapurple !important;
     color: teal;
 }
