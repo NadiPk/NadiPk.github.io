@@ -30,6 +30,6 @@ h2.destination {
     text-transform: capitalize;
 }
 
-.description h5 {
+.description h5 {color: rebeccapurple;
     color: teal;
 }
