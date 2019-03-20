@@ -4,6 +4,7 @@ body {
 }
 header {
     text-align: center;
+    background-image: url("images/header.jpg")
 }
 
  header h2 {
