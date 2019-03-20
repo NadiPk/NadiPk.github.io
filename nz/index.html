@@ -7,6 +7,8 @@
     <title>Neuseelandreise - Auckland </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <script src="main.js"></script>
 </head>
     
@@ -21,7 +23,7 @@
 <address>
         <!-- TODO: ein User-(Symbol)Bild mit 100x100 Pixel im Format JPG mit dem Namen user.jpg in einem Unterordner images/ --> <img src="images/user.jpg" alt="Nadine"><br>
         <!-- TODO: ein address-Element mit zwei Links -->
-            <!-- TODO: ein Link auf die eigene E-Mailadresse mit dem eigenen Namen--><a href="mailto:n.pook@gmx.de">E-Mailadresse</a><br>
+            <!-- TODO: ein Link auf die eigene E-Mailadresse mit dem eigenen Namen--><a href="mailto:n.pook@gmx.de">Nadine Sylvia Pook</a><br>
             <!-- TODO: ein Link auf den eigenen github.com Account --> <code><a href="https://NadiPk.github.io">Link zum github repository</a></code>
         </address>
     </div>   <hr />
@@ -35,8 +37,9 @@
         <h2>One Tree Hill</h2>
         <!-- TODO: eine vollständige Abbildung mit Bild im JPG-Format und kursiver Bildüberschrift für diese Sehenswürdigkeit. Das Bild soll attraction.jpg heißen, maximal 900 Pixel breit oder hoch sein und im Ordner images/ liegen. Das Bild soll von https://commons.wikimedia.org/ oder https://pixabay.com/ stammen und eine Public Domain, oder CC BY-SA Lizenz besitzen. -->
         <figure>
+                <figcaption><em><i class="fas fa-camera"></i> Foto: One Tree Hill</em></figcaption>
                 <img src="images/attraction.jpg" alt="One Tree Hill">
-                <figcaption><em>One Tree Hill</em></figcaption>
+                
         
         </figure>
         <!-- TODO: ein Absatz mit der Beschreibung der Sehenswürdigkeit aus der Wikipedia plus einem Link auf die Wikipedia-Seite in der Form "(Quelle: Wikipedia)", das Wort "Wikipedia" als Link -->
@@ -47,7 +50,7 @@
         <h3>Übersichtskarte</h3>
         <!-- TODO: ein div-Element mit dem id-Attribut "map" und drei weiteren Attributen data-lat, data-lng und data-title. Die Koordinaten von data-lat und data-lng sind als Dezimalgrad mit einem "." als Komma zu schreiben und aus der Wikipedia zu entnehmen. Das data-title Attribut enthält einen Titel für die oben verwendete Sehenswürdigkeit
         -->
-        <div id="map" data-lat="-36,899997" data-lng="174,783328" data-title="One Tree Hill"
+        <div id="map" data-lat="-36,899997" data-lng="174,783328" data-title="One Tree Hill"></div>
 
         <h3>Links</h3>
      
@@ -64,8 +67,8 @@
     <footer>
         <!-- TODO: ein nav-Element mit zwei Links auf die vorherige Etappe und die nächste Etappe mit den Klassen "back" und "next" sowie den Link-Texten "vorhergehender Stop" und "nächster Stop". Die Links verweisen auf die entsprechenden Etappen in der Form https://username.github.io/nz/index.html -->
         <nav>
-                <a class="back" href="https://elleluk.github.io/nz/index.html">leztes Reiseziel</a>
-                <a class="next" href="https://antoniamoschin.github.io/nz/index.html">nächstes Reiseziel</a>
+                <a class="back" href="https://elleluk.github.io/nz/index.html"><i class="fas fa-arrow-left"></i> leztes Reiseziel </a>
+                <a class="next" href="https://antoniamoschin.github.io/nz/index.html">nächstes Reiseziel <i class="fas fa-arrow-right"></i></a>
         </nav>
     </footer>
 
