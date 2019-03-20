@@ -12,3 +12,9 @@ const titel = div.getAttribute ("data-title");
 let karte = L.map("map");
 //console.log(karte);
 
+//auf Ausschnitt zoomen
+karte.setView(
+    [breite,laenge],
+    13
+);
+
