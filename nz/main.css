@@ -2,3 +2,10 @@ body {
     max-width: 1280px;
     margin: auto;
 }
+header {
+    text-align: center;
+}
+
+h2 {
+    font-size: 4em;
+}
