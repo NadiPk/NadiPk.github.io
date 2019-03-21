@@ -172,3 +172,15 @@ public class BadNames {
         int yearOfBirth = 1955;
     }
 }
+
+//9
+
+public class MyProfile {
+	public static void main(String[] args) {   
+		String name = "Nadine";
+    int age = 29;
+    double desiredSalary = 20000.00;
+    char gender = 'f';
+    boolean lookingForJob = false;
+	}
+}
