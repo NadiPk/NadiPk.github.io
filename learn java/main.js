@@ -77,3 +77,38 @@ public class Review {
     }
     
   }
+
+
+
+  //1/9
+
+  public class Creator {
+	public static void main(String[] args) {
+    String name = "James Gosling";
+    int yearCreated = 1995;
+    
+    System.out.println(name);
+    System.out.println(yearCreated);
+	}
+}
+
+
+//2
+
+//This is the class declaration:
+public class CountComment {
+    //This is the main method that runs when you compile:
+      public static void main(String[] args) {
+      //This is where you will define your variable:
+      int numComments = 6;
+      //This is where you will print your variable:
+          System.out.println(numComments);
+    }
+    
+  //This is the end of the class:
+  }
+  
+  //This is outside the class
+
+  //3
+  
