@@ -39,3 +39,8 @@ lostDollar--;
 //7
 let favoriteAnimal = "cat";
 console.log("My favorite animal: " + favoriteAnimal);
+
+//8
+let myName = 'Nadine';
+let myCity = 'Barcelona';
+console.log(`My name is ${myName}. My favorite city is ${myCity}.`)
