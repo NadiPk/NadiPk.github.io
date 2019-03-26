@@ -26,3 +26,6 @@ console.log(2019 - 1969); // Prints 50
 console.log(65 / 240); // Prints 0,27083333333333
 console.log(0.2708 * 100); // Prints 27,08
 
+//6
+console.log('Hello'+ ' ' + 'World');
+
