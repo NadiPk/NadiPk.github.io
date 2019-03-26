@@ -44,3 +44,9 @@ console.log("My favorite animal: " + favoriteAnimal);
 let myName = 'Nadine';
 let myCity = 'Barcelona';
 console.log(`My name is ${myName}. My favorite city is ${myCity}.`)
+
+//9
+let newVariable = 'Playing around with typeof.';
+console.log(typeof newVariable);
+newVariable = 1;
+console.log(typeof newVariable);
