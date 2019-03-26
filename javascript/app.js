@@ -27,5 +27,7 @@ console.log(65 / 240); // Prints 0,27083333333333
 console.log(0.2708 * 100); // Prints 27,08
 
 //6
-console.log('Hello'+ ' ' + 'World');
+console.log('Hello' + ' ' + 'World');
 
+//7
+console.log('Teaching the world how to code'.length);
