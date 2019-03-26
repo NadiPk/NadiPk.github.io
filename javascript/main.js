@@ -9,3 +9,7 @@ let changeMe = true;
 changeMe = false;
 console.log(changeMe);
 
+//4
+const entree = 'Enchiladas';
+console.log(entree);
+const testing;
