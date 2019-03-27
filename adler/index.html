@@ -1,19 +1,21 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Neuseelandreise - Auckland </title>
+    <title>Adlerweg</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet"> 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script src="blicke.js"></script>
     <script defer src="main.js"></script>
 </head>
-    
+
 <body>
     <header>
         <h3>Adlerweg</h3>
@@ -21,46 +23,74 @@
         <h2>Gasthof Buchacker - Pinegg</h2>
     </header>
 
-    <!-- TODO: ein div-Element mit der Klasse "author" --> <div class="author">
-<address>
-        <!-- TODO: ein User-(Symbol)Bild mit 100x100 Pixel im Format JPG mit dem Namen user.jpg in einem Unterordner images/ --> <img src="images/user.jpg" alt="Nadine"><br>
-        <!-- TODO: ein address-Element mit zwei Links -->
-            <!-- TODO: ein Link auf die eigene E-Mailadresse mit dem eigenen Namen--><a href="mailto:n.pook@gmx.de">Nadine Sylvia Pook</a><br>
-            <!-- TODO: ein Link auf den eigenen github.com Account --> <code><a href="https://NadiPk.github.io/adler/index.html">Link zum github repository</a></code>
+    <!-- TODO: ein div-Element mit der Klasse "author" -->
+    <div class="author">
+        <address>
+            <!-- TODO: ein User-(Symbol)Bild mit 100x100 Pixel im Format JPG mit dem Namen user.jpg in einem Unterordner images/ -->
+            <img src="images/user.jpg" alt="Nadine"><br>
+            <!-- TODO: ein address-Element mit zwei Links -->
+            <!-- TODO: ein Link auf die eigene E-Mailadresse mit dem eigenen Namen--><a
+                href="mailto:n.pook@gmx.de">Nadine Sylvia Pook</a><br>
+            <!-- TODO: ein Link auf den eigenen github.com Account --> <code><a
+                    href="https://NadiPk.github.io/adler/index.html">Link zum github repository</a></code>
         </address>
-    </div>   <hr />
+    </div>
+    <hr />
 
     <main>
-        <!-- TODO: eine Überschrift 1 mit dem Titel der Etappe und einem kurzen "Teaser" --> <h1>Gasthof Buchacker - Pinegg<br>Etappenziel mit Adlerblick</h1> <br>
-        <!-- TODO: ein Absatz mit einem Einführungstext zur Etappe aus der Wikipedia plus einem Link auf die Wikipedia-Seite in der Form "(Quelle: Wikipedia)", das Wort "Wikipedia" als Link --> 
-        <p class="blocksatz">Heute bekommen die Wadeln eine Sondermassage. Es wird steil, aber wunderbar aussichtsreich! Von almerischen Höhen geht es hinauf ins hochalpine Gelände des Rofangebirges. Der Plessenberg, von Einheimischen auch „Blessinger“ genannt, gehört zum „Dreigestirn“ Kienberg, Plessenberg und Heuberg, die nahe zusammen liegen. Hat man ihn und den leichter zu nehmenden Kienberg bewältigt, wartet ein Gebiet mit dem verlockenden Namen Einkehrboden. Einkehren und Übernachten kann man aber erst in Pinegg, dem Zielpunkt der Etappe, am besten im Gasthof Gwercherwirt. Pinegg gehört zu Brandenberg, das ist ein idyllischer Urlaubsort auf einem sonnigen Hochplateau.<em>Quelle: tirol.at</em></p>
-        <a href="https://www.tirol.at/reisefuehrer/sport/wandern/wandertouren/a-adlerweg-etappe-5-gasthof-buchacker-pinegg">tirol.at</a>
+        <!-- TODO: eine Überschrift 1 mit dem Titel der Etappe und einem kurzen "Teaser" -->
+        <h1>Gasthof Buchacker - Pinegg<br>Etappenziel mit Adlerblick</h1> <br>
+        <!-- TODO: ein Absatz mit einem Einführungstext zur Etappe aus der Wikipedia plus einem Link auf die Wikipedia-Seite in der Form "(Quelle: Wikipedia)", das Wort "Wikipedia" als Link -->
+        <p class="blocksatz">Heute bekommen die Wadeln eine Sondermassage. Es wird steil, aber wunderbar aussichtsreich!
+            Von almerischen Höhen geht es hinauf ins hochalpine Gelände des Rofangebirges. Der Plessenberg, von
+            Einheimischen auch „Blessinger“ genannt, gehört zum „Dreigestirn“ Kienberg, Plessenberg und Heuberg, die
+            nahe zusammen liegen. Hat man ihn und den leichter zu nehmenden Kienberg bewältigt, wartet ein Gebiet mit
+            dem verlockenden Namen Einkehrboden. Einkehren und Übernachten kann man aber erst in Pinegg, dem Zielpunkt
+            der Etappe, am besten im Gasthof Gwercherwirt. Pinegg gehört zu Brandenberg, das ist ein idyllischer
+            Urlaubsort auf einem sonnigen Hochplateau.<br><br><em>Quelle: tirol.at</em></p>
+        <a
+            href="https://www.tirol.at/reisefuehrer/sport/wandern/wandertouren/a-adlerweg-etappe-5-gasthof-buchacker-pinegg">tirol.at</a>
         <!-- TODO: eine Überschrift 2 einer Sehenswürdigkeit der Etappe-->
         <h2>Adlerblick</h2>
         <!-- TODO: eine vollständige Abbildung mit Bild im JPG-Format und kursiver Bildüberschrift für diese Sehenswürdigkeit. Das Bild soll attraction.jpg heißen, maximal 900 Pixel breit oder hoch sein und im Ordner images/ liegen. Das Bild soll von https://commons.wikimedia.org/ oder https://pixabay.com/ stammen und eine Public Domain, oder CC BY-SA Lizenz besitzen. -->
         <figure>
-                <figcaption><em><i class="fas fa-camera"></i> Foto: Adlerblick</em></figcaption>
-                <img src="images/adlerblick.jpg" alt="adlerblick">
-                
-        
+            <figcaption><em><i class="fas fa-camera"></i> Foto: Adlerblick</em></figcaption>
+            <img src="images/adlerblick.jpg" alt="adlerblick">
+
+
         </figure>
         <!-- TODO: ein Absatz mit der Beschreibung der Sehenswürdigkeit aus der Wikipedia plus einem Link auf die Wikipedia-Seite in der Form "(Quelle: Wikipedia)", das Wort "Wikipedia" als Link -->
 
-        <p class="blocksatz">Zwei Berge mit grandioser Aussicht stehen im Mittelpunkt dieser schönen, aber fordernden Etappe: der Plessenberg mit 1.743 Meter und der Kienberg. Dieser ist um 43 Meter höher, doch vom Inntal aus gesehen wirkt der Plessenberg imposanter als seine beiden Kollegen Heuberg und Kienberg. <br>Dieser liegt bei dieser Etappe direkt auf dem Weg, denn der Anstieg auf den Plessenberg ist ein als schwarz ausgewiesener Bergsteig. Er ist sehr steil und offeriert vier Seilpassagen. Nichts für bergunerfahrene Wanderer, sondern eine Tour für Bergsteiger mit Routine und verlässlicher Trittsicherheit.<em>Quelle: tirol.at</em></p>
+        <p class="blocksatz">Zwei Berge mit grandioser Aussicht stehen im Mittelpunkt dieser schönen, aber fordernden
+            Etappe: der Plessenberg mit 1.743 Meter und der Kienberg. Dieser ist um 43 Meter höher, doch vom Inntal aus
+            gesehen wirkt der Plessenberg imposanter als seine beiden Kollegen Heuberg und Kienberg. <br>Dieser liegt
+            bei dieser Etappe direkt auf dem Weg, denn der Anstieg auf den Plessenberg ist ein als schwarz ausgewiesener
+            Bergsteig. Er ist sehr steil und offeriert vier Seilpassagen. Nichts für bergunerfahrene Wanderer, sondern
+            eine Tour für Bergsteiger mit Routine und verlässlicher Trittsicherheit. <br><br><br>Streckenbeschreibung<br><br>
+            <em>Startpunkt: Gasthof Buchacker</em><br>
+            
+            Vom Gasthof Buchacker ein Stück den Forstweg bergab bis zur nächsten Kreuzung, hier rechts dem Wegverlauf folgen bis ins „Hasatal". Dann weiter zur nächsten Kreuzung, hier links etwas ansteigend und dann bald rechts auf den Steig in Richtung „Nachbergalmen" abzweigen. Nun geht es etwas steiler bergauf bis zum Nachberg Hochleger und weiter über das Almgebiet bis zum „Ascherjoch" auf 1.458 Meter. Jetzt kommt der technisch anspruchsvollere Teil der Tour – der Weg hinauf zum „Plessenberg", ein schwarzer Bergweg mit vier Seilpassagen. Teilweise steigt man dabei recht steil aufwärts über Steintreppen und seilversicherte Stellen bis zum Gipfel auf 1.743 Meter. Von hier aus genießt man eine herrliche Aussicht zum Kaisergebirge, zu den Kitzbühler Alpen, zum Rofangebirge, zu den Zillertaler und Stubaier Alpen, bei guter Sicht sieht man sogar bis zum Großglockner und Großvenediger. Nach der verdienten Rast geht es kurz abwärts bis zum Heubergsattel, hier rechts in Richtung Kienberg halten. Der nachfolgende Aufstieg führt durch Latschenfelder zum Gipfel vom Kienberg und damit zur höchsten Erhebung der Tour auf 1.786 Meter. Damit ist das Aufstiegspensum erfüllt. Ab jetzt geht es nur noch abwärts über schöne Almgebiete, man passiert u.a. die Einkehralm und die Heubrandalm. Der Endspurt erfolgt über einen steilen Steig von „Prama" hinunter nach Pinegg, wo man sich nach dieser langen und fordernden Etappe im Gasthaus Gwercherwirt ausruhen kann, das inmitten unberührter Natur im Hochtal Brandenberg liegt. <br><br>
+            
+            <em>Endpunkt: Gasthof Gwercherwirt (Brandenberg)</em><em><br><br>Quelle: tirol.at</em></p>
         <a href="https://de.wikipedia.org/wiki/One_Tree_Hill_(Neuseeland)">tirol.at</a>
 
         <h3>Übersichtskarte</h3>
         <!-- TODO: ein div-Element mit dem id-Attribut "map" und drei weiteren Attributen data-lat, data-lng und data-title. Die Koordinaten von data-lat und data-lng sind als Dezimalgrad mit einem "." als Komma zu schreiben und aus der Wikipedia zu entnehmen. Das data-title Attribut enthält einen Titel für die oben verwendete Sehenswürdigkeit
         -->
-        <div id="map" data-lat1="47.53318720" data-lng1="12.01885110" data-title1="Gasthof Buchacker" data-lat2="47.51852840" data-lng2="11.89731090" data-title2="Pinegg"></div>
+        <div id="map" data-lat1="47.53318720" data-lng1="12.01885110" data-title1="Gasthof Buchacker"
+            data-lat2="47.51852840" data-lng2="11.89731090" data-title2="Pinegg"></div>
 
         <h3>Links</h3>
-     
+
         <ul>
-                <li><a href="https://www.tirol.at/reisefuehrer/sport/wandern/adlerweg?gclid=EAIaIQobChMIje6oytGi4QIVz-R3Ch00qQOgEAAYASAAEgLbtPD_BwE">www.tirol.at</a></li>
-                    <li><a href="https://www.fernwege.de/a/adlerweg/005/index.html">www.fernwege.de</a></li>
-                        <li><a href="https://www.bergfex.at/sommer/tirol/touren/wanderung/60435,adlerweg-etappe-5-neu--buchacker-ueber-nachberg-ascherjoch-plessenberg-kienberg-nach-pinegg/">www.bergfex.at</a></li>
-            </ul>
+            <li><a
+                    href="https://www.tirol.at/reisefuehrer/sport/wandern/adlerweg?gclid=EAIaIQobChMIje6oytGi4QIVz-R3Ch00qQOgEAAYASAAEgLbtPD_BwE">www.tirol.at</a>
+            </li>
+            <li><a href="https://www.fernwege.de/a/adlerweg/005/index.html">www.fernwege.de</a></li>
+            <li><a
+                    href="https://www.bergfex.at/sommer/tirol/touren/wanderung/60435,adlerweg-etappe-5-neu--buchacker-ueber-nachberg-ascherjoch-plessenberg-kienberg-nach-pinegg/">www.bergfex.at</a>
+            </li>
+        </ul>
 
     </main>
 
@@ -69,8 +99,10 @@
     <footer>
         <!-- TODO: ein nav-Element mit zwei Links auf die vorherige Etappe und die nächste Etappe mit den Klassen "back" und "next" sowie den Link-Texten "vorhergehender Stop" und "nächster Stop". Die Links verweisen auf die entsprechenden Etappen in der Form https://username.github.io/nz/index.html -->
         <nav>
-                <a class="back" href="https://antoniamoschin.github.io/adler/index.html"><i class="fas fa-arrow-left"></i> leztes Reiseziel </a>
-                <a class="next" href="https://hannesklaus1.github.io/adler/index.html">nächstes Reiseziel <i class="fas fa-arrow-right"></i></a>
+            <a class="back" href="https://antoniamoschin.github.io/adler/index.html"><i class="fas fa-arrow-left"></i>
+                leztes Reiseziel </a>
+            <a class="next" href="https://hannesklaus1.github.io/adler/index.html">nächstes Reiseziel <i
+                    class="fas fa-arrow-right"></i></a>
         </nav>
     </footer>
 
