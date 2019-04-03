@@ -1,15 +1,16 @@
-body { 
+body {
     max-width: 1280px;
     margin: auto;
     font-family: "Open Sans";
 }
+
 header {
     text-align: center;
     background-image: url("images/adlerweg.jpg");
     background-position: 0 50%;
 }
 
- header h2 {
+header h2 {
     font-size: 4em;
     color: white;
     margin: 0;
