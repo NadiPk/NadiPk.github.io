@@ -98,25 +98,61 @@ async function loadStations() {
 
         })
         .addTo(awsTirol);
-    awsTirol.addTo(karte);
     karte.fitBounds(awsTirol.getBounds());
     layerControl.addOverlay(awsTirol, "Wetterstationen Tirol");
+    //windrichtung anzeigen
+    const windLayer = L.featureGroup();
     L.geoJson(stations, {
         pointToLayer: function (feature, latlng) {
             if (feature.properties.WR) {
+                let color = 'black';
+                if (feature.properties.WG > 20) {
+                    color = 'red';
+
+                }
+                return L.marker(latlng, {
+                    icon: L.divIcon({
+
+                        html: `<i style = "color: ${color};transform: rotate(${feature.properties.WR}deg)" class="fas fa-arrow-up fa-2x"></i>`
+                    })
+
+
+                });
+
 
             }
-            return L.marker(latlng, {
-                icon: L.divIcon({
-
-                    html: ' <i class="fas fa-arrow-up"></i>'
-                })
-
-
-            });
 
         }
-    }).addTo(karte);
+    }).addTo(windLayer);
+    layerControl.addOverlay(windLayer, "Windrichtung");
+    windLayer.addTo(karte);
+
+    const temperaturLayer = L.featureGroup();
+    L.geoJson(stations, {
+        pointToLayer: function (feature, latlng) {
+            if (feature.properties.LT) {
+                let color = 'blue';
+                if (feature.properties.LT > 0) {
+                    color = 'red';
+
+                }
+                return L.marker(latlng, {
+                    icon: L.divIcon({
+                    html: `<div class = "temperaturLabel" style="background-color: ${color}">${feature.properties.LT}`
+
+                    })
+
+
+                });
+
+
+            }
+
+        }
+    }).addTo(temperaturLayer);
+    layerControl.addOverlay(temperaturLayer, "Temperatur");
+    temperaturLayer.addTo(karte);
+
 
 }
 
