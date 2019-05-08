@@ -1,5 +1,3 @@
-
-
 let karte = L.map("map");
 
 
@@ -54,9 +52,9 @@ const kartenLayer = {
 
 
 
-kartenLayer.osm.addTo(karte);
+kartenLayer.geolandbasemap.addTo(karte);
 
-L.control.layers({
+const layerControl = L.control.layers({
     "OpenStreetMap": kartenLayer.osm,
     "Geoland Basecamp": kartenLayer.geolandbasemap,
     "Geoland Basemap Overlay": kartenLayer.bmapgrau,
@@ -72,27 +70,65 @@ L.control.layers({
 
 
 karte.setView(
- [47.267222,11.392778],
-  15
+    [47.267222, 11.392778],
+    15
 );
 
 //console.log (AWS);
+
 const awsTirol = L.featureGroup();
-L.geoJson(AWS)
-.bindPopup(function(layer){
-    console.log("Layer: ", layer)
-    return `Temperatur: ${layer.feature.properties.LT} °C <br>
-    Datum: ${layer.feature.properties.date}`;
-}) 
-.addTo(awsTirol);
-awsTirol.addTo(karte);
-karte.fitBounds(awsTirol.getBounds());
+async function loadStations() {
+    const response = await fetch("https://aws.openweb.cc/stations");
+    const stations = await response.json();
+    L.geoJson(stations)
+        .bindPopup(function (layer) {
+            //console.log("Layer: ", layer);
+            const date = new Date(layer.feature.properties.date);
+            console.log("Datum", date);
+            return `<h4>${layer.feature.properties.name}<h4>
+    Höhe: ${layer.feature.geometry.coordinates[2]} m<br>
+    Temperatur: ${layer.feature.properties.LT} °C <br>
+    Datum: ${date.toLocaleDateString("da-AT")}
+    ${date.toLocaleTimeString("da-AT")} <br>
+    Windgeschwindigkeit (km/h):
+     ${layer.feature.properties.WG ? layer.feature.properties.WG : 'keine Daten' }
+     <hr>
+     <footer>Land Tirol - <a href="https://data.tirol.gv.at">data.tirol.gv.at </a></footer>
+     `;
+
+        })
+        .addTo(awsTirol);
+    awsTirol.addTo(karte);
+    karte.fitBounds(awsTirol.getBounds());
+    layerControl.addOverlay(awsTirol, "Wetterstationen Tirol");
+    L.geoJson(stations, {
+        pointToLayer: function (feature, latlng) {
+            if (feature.properties.WR) {
+
+            }
+            return L.marker(latlng, {
+                icon: L.divIcon({
+
+                    html: ' <i class="fas fa-arrow-up"></i>'
+                })
 
 
+            });
 
+        }
+    }).addTo(karte);
 
+}
 
+loadStations()
 
-
-
-
+//const awsTirol = L.featureGroup();
+//L.geoJson(AWS)
+//.bindPopup(function(layer){
+//    console.log("Layer: ", layer)
+//   return `Temperatur: ${layer.feature.properties.LT} °C <br>
+// Datum: ${layer.feature.properties.date}`;
+//}) 
+//.addTo(awsTirol);
+//awsTirol.addTo(karte);
+//karte.fitBounds(awsTirol.getBounds());
