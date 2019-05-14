@@ -134,6 +134,22 @@ async function loadStations() {
         [5, "orange"],
         [2, "red"],
     ];
+
+
+
+
+    const feuchtelayer = L.featureGroup();
+    const feuchtefarbPalette = [
+        [30, "#EEE"],
+        [40, "#DDD"],
+        [50, "#C6C9CE"],
+        [60, "#BBB"],
+        [70, "#AAC"],
+        [80, "#9998DD"],
+        [90, "#8788EE"],
+        [100, "#7677E1"],
+    ];
+
     L.geoJson(stations, {
         pointToLayer: function (feature, latlng) {
             if (feature.properties.LT) {
