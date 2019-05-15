@@ -98,6 +98,31 @@ async function loadStations() {
     //awsTirol.addTo(karte);
     karte.fitBounds(awsTirol.getBounds()); //Zoom auf die Pins
     layerControl.addOverlay(awsTirol, "Wetterstationen Tirol");
+    
+    /*
+    //Array startet bei blau =0
+    let farben = ["blau","gelb","rot"];
+    farben.length;
+    farben[0]
+    //Schleife
+    for (let i=0; i<farben.length; i++) {
+        console.log(farben[i]); //Farben ausgeben lassen
+    }
+
+       //Arrey im arrey
+       let farben = [
+           [0, "blau"],
+           [5,"gelb"],
+           [10, "rot"]
+       ];
+       farben.length;
+       farben[2][1] //für rot
+       //Schleife
+       for (let i=0; i<farben.length; i++) {
+           console.log(farben[i]); //Farben ausgeben lassen
+       }
+       */ //-> Erklärungsbeispiel
+
 
     // Windrichtung anzeigen
     const windLayer = L.featureGroup();
