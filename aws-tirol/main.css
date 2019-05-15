@@ -3,6 +3,7 @@ body {
     padding: 0;
 }
 
+
 #map {
     width: 100vw;
     height: 100vh;
@@ -13,20 +14,21 @@ body {
     border: none;
 }
 
-.temperaturLabel {
+.tempLabel {
     display: inline;
-    font-size: 1.2em;
+    font-size: 1.2 em;
     font-weight: bold;
     padding: 0.3em;
-    border: 1px solid grey;
+    border: 1px solid gray;
     text-shadow:
-    -1px -1px 0 white,
-    1px -1px 0 white,
-    -1px 1px 0 white,
-    1px 1px 0 white;
+        -1px -1px 0 white,
+        1px -1px 0 white,
+        -1px 1px 0 white,
+        1px 1px 0 white;
 }
 
-.relativefeuchteLabel {
+
+.feuchtLabel {
     display: inline;
     font-size: 1.2em;
     font-weight: bold;
@@ -37,4 +39,30 @@ body {
         1px -1px 0 white,
         -1px 1px 0 white,
         1px 1px 0 white;
+}
+
+.windgeschLabel {
+    display: inline;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 0.3em;
+    border: 1px solid gray;
+    text-shadow:
+        -1px -1px 0 white,
+        1px -1px 0 white,
+        -1px 1px 0 white,
+        1px 1px 0 white;
+}
+
+.schneeLabel {
+    display: inline;
+    font-size: 1.35em;
+    font-weight: bold;
+    padding: 0.3em;
+    border: 1px solid gray;
+    text-shadow:
+        -1.5px -1.5px 0 white,
+        -1.5px -1.5px 0 white,
+        -1.5px -1.5px 0 white,
+        -1.5px -1.5px 0 white;
 }
