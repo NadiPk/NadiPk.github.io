@@ -1,3 +1,5 @@
+/* Wien OGD Beispiele */
+
 let karte = L.map("map");
 
 const kartenLayer = {
@@ -65,96 +67,75 @@ kartenLayer.bmapgrau.addTo(karte);
 
 karte.addControl(new L.Control.Fullscreen());
 
+//
+// Wikipedia Artikel laden
+//
+const wikipediaGruppe = L.featureGroup().addTo(karte);
+layerControl.addOverlay(wikipediaGruppe, "Wikipedia Artikel") //Auswahlmöglichkeit hinzufügen
+
+async function wikipediaArtikelLaden(url) {
+    wikipediaGruppe.clearLayers(); 
+    console.log("Lade zoomend moveend", url);
+
+    const response = await fetch(url);
+    const jsonDaten = await response.json();
+
+    console.log(jsonDaten);
+    for (let artikel of jsonDaten.geonames) {
+        const wikipediaMarker = L.marker([artikel.lat,artikel.lng], {       // Marker setzen
+            icon : L.icon({
+                iconUrl : "icons/wikipedia.png", //neuer Marker
+                iconSize :[22,22] //Marker Größe
+            })
+            
+        }).addTo(wikipediaGruppe);
+    
+    // Popups hinzufügen
+    wikipediaMarker.bindPopup(`
+        <h3>${artikel.title}</h3> 
+        <p>${artikel.summary}</p>
+        <hr>
+        <footer><a target="blank" href="https://${artikel.wikipediaUrl}">Weblink</a></footer>
+        `); //Titel, Zusammenfassung und Weblink des Artikels
+    
+    }
+}
+
+let letzteGeonamesUrl = null;
+karte.on("load, zoomed moveend", function () {
+    //console.log("karte geladen", karte.getBounds());
+
+    let ausschnitt = {
+        n : karte.getBounds().getNorth(),
+        s : karte.getBounds().getSouth(),
+        o : karte.getBounds().getEast(),
+        w : karte.getBounds().getWest(),
+    }
+    //console.log(ausschnitt)
+    const geonamesUrl = `http://api.geonames.org/wikipediaBoundingBoxJSON?formatted=true&north=${ausschnitt.n}&south=${ausschnitt.s}&east=${ausschnitt.o}&west=${ausschnitt.w}&username=webmapping&style=full&maxRows=50&lang=de`;
+    //console.log(geonamesUrl);
+
+    //JSON-Artikel laden
+    if (geonamesUrl != letztegeonamesUrl) {
+        wikipediaArtikelLaden(geonamesUrl);
+        letztegeonamesUrl = geonamesUrl;
+    }
+
+    wikipediaArtikelLaden(geonamesUrl);
+});
+
+
+//Wiki Ende
+
 karte.setView([48.208333, 16.373056], 12);
+
+
 
 // die Implementierung der Karte startet hier
 
-const url = 'https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SPAZIERPUNKTOGD &srsName=EPSG:4326&outputFormat=json';
+const url = 'https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:WLANWIENATOGD&srsName=EPSG:4326&outputFormat=json';
 
 function makeMarker(feature, latlng) {
-    const fotoIcon = L.icon({
-        iconUrl: 'http://www.data.wien.gv.at/icons/sehenswuerdigogd.svg', //anderer Marker
-        iconSize: [16, 16]
-    });
-    const sightMarker = L.marker(latlng, {
-        icon: fotoIcon
-    });
-    sightMarker.bindPopup(`
-        <h3>${feature.properties.NAME}</h3>
-        <p>${feature.properties.BEMERKUNG}</p>
-        <hr>
-        <footer><a target="blank" href="${feature.properties.WEITERE_INF}">Weblink</a></footer>
-        `); //Name, Beschreibung, Weblink (neuer Tab)
-    return sightMarker;
-}
-
-async function loadSights(url) {
-    const clusterGruppe = L.markerClusterGroup();
-    const response = await fetch(url);
-    const sightsData = await response.json();
-    const geoJson = L.geoJson(sightsData, {
-        pointToLayer: makeMarker
-    });
-
-    //Clustergruppe
-    clusterGruppe.addLayer(geoJson);
-    karte.addLayer(clusterGruppe);
-    layerControl.addOverlay(clusterGruppe, "Sehenswürdigkeit");
-
-    //Suchfeld einfügen
-    const suchFeld = new L.Control.Search({
-        layer: clusterGruppe,
-        propertyName: "NAME",
-        zoom: 17,
-        initial: false,
-    });
-    karte.addControl(suchFeld);
-}
-
-loadSights(url);
-
-//Maßstab einfügen
-const scale = L.control.scale({
-    imperial: false,
-    metric: true
-
-});
-karte.addControl(scale);
-
-
-//Spazierwege hinzufügen
-const wege = 'https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SPAZIERLINIEOGD &srsName=EPSG:4326&outputFormat=json';
-
-function linienPopup(feature, layer) { //Wege Popup (nur Name möglich)
-    const popup = `
-        <h3>${feature.properties.NAME}</h3>
-        `;
-    layer.bindPopup(popup);
-}
-
-async function loadWege(wegeURL) {
-    const antwort = await fetch(wegeURL);
-    const wegeData = await antwort.json();
-    const wegeJson = L.geoJson(wegeData, {
-        style: function () { //Farbe der Wege
-            return {
-                color: "yellow"
-            };
-        },
-        onEachFeature: linienPopup
-    });
-
-    karte.addLayer(wegeJson);
-    layerControl.addOverlay(wegeJson, "Spazierwege");
-}
-loadWege(wege);
-
-
-//WLAN Standorte einfügen
-
-const wifi = 'https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:WLANWIENATOGD&srsName=EPSG:4326&outputFormat=json';
-
-function makeWifi(feature, latlng) {
     const wifiIcon = L.icon({
         iconUrl: 'http://www.data.wien.gv.at/icons/wlanwienatogd.svg', //anderer Marker
         iconSize: [16, 16]
@@ -169,28 +150,35 @@ function makeWifi(feature, latlng) {
     return wifiMarker;
 }
 
-async function loadWifi(wifi) {
-    const clusterGruppewifi = L.markerClusterGroup();
-    const responsewifi = await fetch(wifi);
-    const wifiData = await responsewifi.json();
-    const geoJson = L.geoJson(wifiData, {
-        pointToLayer: makeWifi
+async function loadWifi(url) {
+    const clusterGruppe = L.markerClusterGroup();
+    const response = await fetch(url);
+    const sightsData = await response.json();
+    const geoJson = L.geoJson(sightsData, {
+        pointToLayer: makeMarker
     });
 
     //Clustergruppe
-    clusterGruppewifi.addLayer(geoJson);
-    karte.addLayer(clusterGruppewifi);
-    layerControl.addOverlay(clusterGruppewifi, "WLAN-Standorte");
+    clusterGruppe.addLayer(geoJson);
+    karte.addLayer(clusterGruppe);
+    layerControl.addOverlay(clusterGruppe, "WLAN-Standorte");
+
+    //Suchfeld einfügen
+    const suchFeld = new L.Control.Search({
+        layer: clusterGruppe,
+        propertyName: "NAME",
+        zoom: 17,
+        initial: false
+    });
+    karte.addControl(suchFeld);
 }
 
-//Suchfeld Wifi
-    // const suchFeldwifi = new L.Control.Search({
-    //     layer: clusterGruppewifi,
-    //     propertyName: "NAME",
-    //     zoom: 17,
-    //     initial: false,
-    // });
-    // karte.addControl(suchFeldwifi);
+loadWifi(url);
 
+//Maßstab einfügen
+const scale = L.control.scale({
+    imperial: false,
+    metric: true
 
-loadWifi(wifi);
+});
+karte.addControl(scale);
