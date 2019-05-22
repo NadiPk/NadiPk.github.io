@@ -211,4 +211,15 @@ new L.GPX("AdlerWegEtappe05.gpx", {async: true,
  
 }).on('loaded', function(e) {
     map.fitBounds(e.target.getBounds());
-  }).addTo(karte);
+
+  }).on('addline', function(e){
+      console.log('linie geladen')
+      const controlElevation = L.control.elevation({
+          detachedView: true,
+          elevationDiv: "#elevation-div",
+      });
+      controlElevation.addTo(karte);
+      controlElevation.addData(e.line);
+  })
+  .addTo(karte);
+
