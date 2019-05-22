@@ -199,3 +199,8 @@ for (let blick of ADLERBLICKE) {
 
 console.log(blickeGruppe.getBounds());
 karte.fitBounds(blickeGruppe.getBounds());
+
+//gpx track laden
+new L.GPX("AdlerWegEtappe05.gpx", {async: true}).on('loaded', function(e) {
+    map.fitBounds(e.target.getBounds());
+  }).addTo(karte);
