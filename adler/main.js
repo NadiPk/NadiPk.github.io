@@ -91,8 +91,8 @@ var coords = new L.Control.Coordinates();
 coords.addTo(karte);
 coords.addTo(karte);
 
-karte.on('click', function(e) {
-	coords.setCoordinates(e);
+karte.on('click', function (e) {
+    coords.setCoordinates(e);
 });
 
 
@@ -201,62 +201,62 @@ console.log(blickeGruppe.getBounds());
 karte.fitBounds(blickeGruppe.getBounds());
 
 //gpx track laden & marker laden
-new L.GPX("AdlerWegEtappe05.gpx", {async: true,
-      marker_options: {
+new L.GPX("AdlerWegEtappe05.gpx", {
+    async: true,
+    marker_options: {
         startIconUrl: 'images/pin-icon-start.png',
         endIconUrl: 'images/pin-icon-end.png',
         shadowUrl: 'images/pin-shadow.png'
-      }
+    }
 
- 
-}).on('loaded', function(e) {
+
+}).on('loaded', function (e) {
     karte.fitBounds(e.target.getBounds());
 
-  }).on('addline', function(e){
-      console.log('line geladen')
-      const controlElevation = L.control.elevation({
+}).on('addline', function (e) {
+    console.log('line geladen')
+    const controlElevation = L.control.elevation({
         position: "bottomright",
-        collapsed: true, 
+        collapsed: true,
         detachedView: false,
-        
+
         // detachedView: true,
-         // elevationDiv: "#elevation-div",
-      });
-      controlElevation.addTo(karte);
-      controlElevation.addData(e.line);
-      const gpxLinie = e.line.getLatLngs();
-      console.log(gpxLinie);
-     for (let i = 1; i < gpxLinie.length; i += 1) {
+        // elevationDiv: "#elevation-div",
+    });
+    controlElevation.addTo(karte);
+    controlElevation.addData(e.line);
+    const gpxLinie = e.line.getLatLngs();
+    console.log(gpxLinie);
+    for (let i = 1; i < gpxLinie.length; i += 1) {
         // console.log(gpxLinie[i]);
-         let p1 = gpxLinie[i-1];
-         let p2 = gpxLinie[i];
- let dist = karte.distance(
-     [p1.lat,p1.lng ],
-     [p2.lat,p2.lng ]
- );
+        let p1 = gpxLinie[i - 1];
+        let p2 = gpxLinie[i];
+        let dist = karte.distance(
+            [p1.lat, p1.lng],
+            [p2.lat, p2.lng]
+        );
 
- let delta = (p2.meta.ele - p1.meta.ele);
- let proz = (dist != 0 ? delta / dist * 100.0 : 0).toFixed(1); //toFiex = Runden auf eine Nachkommastelle
- console.log('Distanz: ', dist, 'Höhendiff:', delta, 'Steigung', proz);
- let farbe =
- proz >= 10 ? "#feebe2":
- proz >= 6 ? "#fcc5c0":
- proz >= 2 ? "#fa9fb5":
- proz >= 0 ? "#f768a1":
- proz >= -6 ? "#dd3497":
- proz >= -10 ? "#ae017e":
- "#7a0177";
- 
- //['#feebe2','#fcc5c0','#fa9fb5','#f768a1','#dd3497','#ae017e','#7a0177']
-L.polyline(
-    [
-        [p1.lat,p1.lng],
-        [p2.lat,p2.lng],
-    ], {
-        color : farbe,
+        let delta = (p2.meta.ele - p1.meta.ele);
+        let proz = (dist != 0 ? delta / dist * 100.0 : 0).toFixed(1); //toFiex = Runden auf eine Nachkommastelle
+        console.log('Distanz: ', dist, 'Höhendiff:', delta, 'Steigung', proz);
+        let farbe =
+            proz >= 10 ? "#feebe2" :
+            proz >= 6 ? "#fcc5c0" :
+            proz >= 2 ? "#fa9fb5" :
+            proz >= 0 ? "#f768a1" :
+            proz >= -6 ? "#dd3497" :
+            proz >= -10 ? "#ae017e" :
+            "#7a0177";
+
+        //['#feebe2','#fcc5c0','#fa9fb5','#f768a1','#dd3497','#ae017e','#7a0177']
+        L.polyline(
+            [
+                [p1.lat, p1.lng],
+                [p2.lat, p2.lng],
+            ], {
+                color: farbe,
+            }
+        ).addTo(karte);
     }
-).addTo(karte);
-        }
 
-  });
-
+});
