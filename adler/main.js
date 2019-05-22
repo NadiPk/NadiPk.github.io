@@ -200,7 +200,15 @@ for (let blick of ADLERBLICKE) {
 console.log(blickeGruppe.getBounds());
 karte.fitBounds(blickeGruppe.getBounds());
 
-//gpx track laden
-new L.GPX("AdlerWegEtappe05.gpx", {async: true}).on('loaded', function(e) {
+//gpx track laden & marker laden
+new L.GPX("AdlerWegEtappe05.gpx", {async: true,
+      marker_options: {
+        startIconUrl: 'images/pin-icon-start.png',
+        endIconUrl: 'images/pin-icon-end.png',
+        shadowUrl: 'images/pin-shadow.png'
+      }
+
+ 
+}).on('loaded', function(e) {
     map.fitBounds(e.target.getBounds());
   }).addTo(karte);
