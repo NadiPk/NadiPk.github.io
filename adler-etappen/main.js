@@ -160,6 +160,7 @@ karte.on("click", function(ev){
     console.log("Clicked: ", ev);
     if(!start) {
         start = ev.latlng;
+        alert("Start gesetzt, bitte 2. Punkt für Ende setzen.");
     } else {
         end = ev.latlng;
         routingMachine.setWaypoints([start, end]);
