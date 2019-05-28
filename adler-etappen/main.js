@@ -123,7 +123,7 @@ function etappeErzeugen(nummer) {
     }).addTo(gpxGruppe);
 
     gpxTrack.on("loaded", function () {
-        karte.fitBounds(gpxTrack.getBounds());
+      //  karte.fitBounds(gpxTrack.getBounds());
     });
 
     gpxTrack.on("addline", function(evt) {
@@ -151,3 +151,22 @@ pulldown.onchange = function (evt) {
     console.log(opts[opts.selectedIndex].text);
     etappeErzeugen(opts[opts.selectedIndex].value);
 }
+
+
+const routingMachine = L.Routing.control({}).addTo(karte);
+
+let start, end;
+karte.on("click", function(ev){
+    console.log("Clicked: ", ev);
+    if(!start) {
+        start = ev.latlng;
+    } else {
+        end = ev.latlng;
+        routingMachine.setWaypoints([start, end]);
+        routingMachine.route();
+        start = null;
+    }
+    
+    console.log("Start: ", start, "End: ", end);
+    
+})
